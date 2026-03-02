@@ -31,25 +31,34 @@ class _SigninState extends State<Signin> {
       ),
       body: Column(
         children: [
+          SizedBox(height: 25,),
           CircleAvatar(
-            radius: 60,
+            radius: 40,
             backgroundColor: Colors.amber,
-            child: Icon(Icons.person_4_outlined),
+            child: Icon(Icons.person_2_outlined),
           ),
           SizedBox(height: 28),
           Center(
             child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              
+              
+              
                 child: Center(
+                  
                   // child: Center(
                   child: Column(
+                    
                     //  mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
               
                     children: [
-                      SizedBox(height: 25),
-              
+                     
+                   SizedBox(
+                     height: 300,
+                     width: 500,
+                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                       TextField(
                         controller: emailCtrl,
                         decoration: InputDecoration(
@@ -61,17 +70,22 @@ class _SigninState extends State<Signin> {
                       SizedBox(height: 28),
                       TextField(
                         controller: passwordCtrl,
+                        obscureText: true,
                         decoration: InputDecoration(
                           labelText: 'PASSWORD',
                           border: OutlineInputBorder(),
                         ),
                       ),
+                      ]
+                     ),
+                   ),
                     ],
                   ),
+                  
                 ),
               ),
             ),
-          ),
+          SizedBox(height: 23,),
           Text(
             'forget password?',
             style: TextStyle(fontSize: 15, color: Colors.blue),
@@ -120,7 +134,8 @@ class _SigninState extends State<Signin> {
                 },
                 child: Text(
                   'Create an Account',
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Colors.blue,),
+                  
                 ),
               ),
             ],
