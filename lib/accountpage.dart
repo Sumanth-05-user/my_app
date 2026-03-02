@@ -63,7 +63,7 @@ class _AccountPageState extends State<AccountPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 28),
+                  SizedBox(height: 30),
                   TextField(
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     decoration: InputDecoration(
