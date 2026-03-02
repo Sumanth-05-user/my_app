@@ -9,14 +9,10 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-  int cnt = 0;
+  TextEditingController emailCtrl = TextEditingController();
+  TextEditingController passwordCtrl = TextEditingController();
+
   String message = "";
-  void _inc() {
-    setState(() {
-      cnt++;
-    });
-    // print('Tapped! Counter: $cnt');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,103 +29,105 @@ class _SigninState extends State<Signin> {
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
-      body: Center(
-        child: Card(
-          child: SizedBox(
-            width: 600,
-            height: 550,
-
-            child: Center(
-              // child: Center(
-              child: Column(
-                //  mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-
-                children: [
-                  SizedBox(height: 25),
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.amber,
-                    child: Icon(Icons.person_4_outlined),
-                  ),
-                  SizedBox(height: 28),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'EMAIL ID',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-
-                  SizedBox(height: 28),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'EMAIL ID',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  SizedBox(height: 45),
-                  Text(
-                    'forget password?',
-                    style: TextStyle(fontSize: 15, color: Colors.blue),
-                  ),
-                  SizedBox(height: 40),
-                  ElevatedButton(
-                     style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blue)),
-                    onPressed: () {
-                      setState(() {
-                        message = "Login Successfull";
-                      });
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('LOGIN'),
-                        SizedBox(width: 5),
-                        Icon(Icons.output_rounded),
-
-                        //Color(Colors.blue);
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Don't have an account?"),
-                        TextButton(
-                          //style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blue)),
-                          onPressed:(){
-                            Navigator.push(context,
-                             MaterialPageRoute(builder: (context)=>AccountPage()),
-                             );
-                          },
-                           child: 
-                           Text('Create an Account',style: TextStyle(color: Colors.blue),)
-                           ),
-                        SizedBox(height: 30),
-                       
-                      ],
-                    ),
-                  ),
-                   Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            SizedBox(height: 25,),
-                            Text(
-                              message,
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ],
+      body: Column(
+        children: [
+          CircleAvatar(
+            radius: 60,
+            backgroundColor: Colors.amber,
+            child: Icon(Icons.person_4_outlined),
+          ),
+          SizedBox(height: 28),
+          Center(
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  // child: Center(
+                  child: Column(
+                    //  mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+              
+                    children: [
+                      SizedBox(height: 25),
+              
+                      TextField(
+                        controller: emailCtrl,
+                        decoration: InputDecoration(
+                          labelText: 'EMAIL ID',
+                          border: OutlineInputBorder(),
                         ),
-                ],
+                      ),
+              
+                      SizedBox(height: 28),
+                      TextField(
+                        controller: passwordCtrl,
+                        decoration: InputDecoration(
+                          labelText: 'PASSWORD',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-        ),
+          Text(
+            'forget password?',
+            style: TextStyle(fontSize: 15, color: Colors.blue),
+          ),
+          SizedBox(height: 40),
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(Colors.blue),
+            ),
+            onPressed: () {
+              setState(() {
+                if (emailCtrl.text.isEmpty && passwordCtrl.text.isEmpty) {
+                  message = "Please enter Email and Password";
+                } else if (emailCtrl.text.isEmpty) {
+                  message = "Please enter your Email";
+                } else if (passwordCtrl.text.isEmpty) {
+                  message = "Please enter your Password";
+                } else {
+                  message = "Login Successful";
+                }
+              });
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('LOGIN', style: TextStyle(color: Colors.white)),
+                SizedBox(width: 5),
+                Icon(Icons.output_rounded, color: Colors.white),
+
+                //Color(Colors.blue);
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Don't have an account?"),
+              TextButton(
+                //style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AccountPage()),
+                  );
+                },
+                child: Text(
+                  'Create an Account',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 25),
+          Text(message, style: TextStyle(fontSize: 20, color: Colors.green)),
+        ],
       ),
     );
   }
