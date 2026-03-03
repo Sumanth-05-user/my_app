@@ -38,7 +38,7 @@ class _AccountPageState extends State<AccountPage> {
           CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.black,
-                      child: Icon(Icons.person_2_outlined,color: Colors.white,),
+                      child: Icon(Icons.person_2_outlined,color: Colors.white,size: 35,),
                     ),
                     SizedBox(height: 28),
 
@@ -52,7 +52,7 @@ class _AccountPageState extends State<AccountPage> {
 
         child: Card(
           child: SizedBox(
-            width: 600,
+            width: 450,
             height: 460,
 
             child: Padding(
@@ -134,7 +134,7 @@ class _AccountPageState extends State<AccountPage> {
         ),
         
       ),
-       SizedBox(height: 25),
+       SizedBox(height: 35),
                     ElevatedButton(
                       style: ButtonStyle(
                         shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(0))),

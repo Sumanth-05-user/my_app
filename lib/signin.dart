@@ -9,10 +9,7 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-  TextEditingController emailCtrl = TextEditingController();
-  TextEditingController passwordCtrl = TextEditingController();
-
-  String message = "";
+  
 
   @override
   Widget build(BuildContext context) {
@@ -31,105 +28,113 @@ class _SigninState extends State<Signin> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 25,),
+          SizedBox(height: 25),
           CircleAvatar(
             radius: 40,
             backgroundColor: Colors.amber,
-            child: Icon(Icons.person_2_outlined,color: Colors.white,),
-            
+            child: Icon(Icons.person_2_outlined, color: Colors.white,size: 35,),
           ),
           SizedBox(height: 35),
           Center(
             child: Card(
-              child:SizedBox(
+              child: SizedBox(
+                height: 330,
+                width: 400,
 
-              height: 330,
-              width: 400,
-              
-              
-              
-               
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-                  
-                  
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+
                   // child: Center(
                   child: Column(
-                    
                     //  mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
-              
+
                     children: [
-                     
-                   SizedBox(
-                     height: 300,
-                     width: 400,
-                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                           Text('EMAIL ADDRESS',style: TextStyle(fontSize: 12,color: Colors.blue),),
-                        ],
-                       ),
-                      TextField(
-                        
-                        controller: emailCtrl,
-                        decoration: InputDecoration(
-                         
-                         // labelText: 'EMAIL ID',
-                          border: OutlineInputBorder(),
+                      SizedBox(
+                        height: 300,
+                        width: 400,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'EMAIL ADDRESS',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TextField(
+                             // controller: emailCtrl,
+                              decoration: InputDecoration(
+                                // labelText: 'EMAIL ID',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+
+                            SizedBox(height: 28),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'PASSWORD',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TextField(
+                              //controller: passwordCtrl,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                //labelText: 'PASSWORD',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-              
-                      SizedBox(height: 28),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                           Text('PASSWORD',style: TextStyle(fontSize: 12,color: Colors.blue),),
-                        ],
-                       ),
-                      TextField(
-                        controller: passwordCtrl,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                         //labelText: 'PASSWORD',
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                      ]
-                     ),
-                   ),
                     ],
                   ),
-                )
                 ),
               ),
             ),
-          SizedBox(height: 38,),
+          ),
+          SizedBox(height: 38),
           Text(
             'forget password?',
-            
-            style: TextStyle(fontSize: 15, color: Colors.blue,decoration: TextDecoration.underline),
+
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.blue,
+              decoration: TextDecoration.underline,
+            ),
           ),
           SizedBox(height: 40),
           ElevatedButton(
             style: ButtonStyle(
-              shape:WidgetStatePropertyAll( RoundedRectangleBorder(borderRadius: BorderRadius.circular(0),),),
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+              ),
               backgroundColor: WidgetStatePropertyAll(Colors.blue),
             ),
             onPressed: () {
               setState(() {
-                if (emailCtrl.text.isEmpty && passwordCtrl.text.isEmpty) {
-                  message = "Please enter Email and Password";
-                } else if (emailCtrl.text.isEmpty) {
-                  message = "Please enter your Email";
-                } else if (passwordCtrl.text.isEmpty) {
-                  message = "Please enter your Password";
-                } else {
-                  message = "Login Successful";
-                }
+                // if (emailCtrl.text.isEmpty && passwordCtrl.text.isEmpty) {
+                //   message = "Please enter Email and Password";
+                // } else if (emailCtrl.text.isEmpty) {
+                //   message = "Please enter your Email";
+                // } else if (passwordCtrl.text.isEmpty) {
+                //   message = "Please enter your Password";
+                // } else {
+                //   message = "Login Successful";
+                // }
               });
             },
             child: Row(
@@ -148,7 +153,7 @@ class _SigninState extends State<Signin> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Don't have an account?"),
-              
+
               TextButton(
                 //style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blue)),
                 onPressed: () {
@@ -159,14 +164,16 @@ class _SigninState extends State<Signin> {
                 },
                 child: Text(
                   'Create an Account',
-                  style: TextStyle(color: Colors.blue,decoration: TextDecoration.underline),
-                  
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ),
             ],
           ),
           SizedBox(height: 25),
-          Text(message, style: TextStyle(fontSize: 20, color: Colors.green)),
+        //  Text(message, style: TextStyle(fontSize: 20, color: Colors.green)),
         ],
       ),
     );
