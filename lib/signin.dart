@@ -35,15 +35,23 @@ class _SigninState extends State<Signin> {
           CircleAvatar(
             radius: 40,
             backgroundColor: Colors.amber,
-            child: Icon(Icons.person_2_outlined),
+            child: Icon(Icons.person_2_outlined,color: Colors.white,),
+            
           ),
-          SizedBox(height: 28),
+          SizedBox(height: 35),
           Center(
             child: Card(
+              child:SizedBox(
+
+              height: 330,
+              width: 400,
               
               
               
-                child: Center(
+               
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+                  
                   
                   // child: Center(
                   child: Column(
@@ -55,24 +63,38 @@ class _SigninState extends State<Signin> {
                      
                    SizedBox(
                      height: 300,
-                     width: 500,
+                     width: 400,
                      child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                       Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                           Text('EMAIL ADDRESS',style: TextStyle(fontSize: 12,color: Colors.blue),),
+                        ],
+                       ),
                       TextField(
+                        
                         controller: emailCtrl,
                         decoration: InputDecoration(
-                          labelText: 'EMAIL ID',
+                         
+                         // labelText: 'EMAIL ID',
                           border: OutlineInputBorder(),
                         ),
                       ),
               
                       SizedBox(height: 28),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                           Text('PASSWORD',style: TextStyle(fontSize: 12,color: Colors.blue),),
+                        ],
+                       ),
                       TextField(
                         controller: passwordCtrl,
                         obscureText: true,
                         decoration: InputDecoration(
-                          labelText: 'PASSWORD',
+                         //labelText: 'PASSWORD',
                           border: OutlineInputBorder(),
                         ),
                       ),
@@ -81,18 +103,20 @@ class _SigninState extends State<Signin> {
                    ),
                     ],
                   ),
-                  
+                )
                 ),
               ),
             ),
-          SizedBox(height: 23,),
+          SizedBox(height: 38,),
           Text(
             'forget password?',
-            style: TextStyle(fontSize: 15, color: Colors.blue),
+            
+            style: TextStyle(fontSize: 15, color: Colors.blue,decoration: TextDecoration.underline),
           ),
           SizedBox(height: 40),
           ElevatedButton(
             style: ButtonStyle(
+              shape:WidgetStatePropertyAll( RoundedRectangleBorder(borderRadius: BorderRadius.circular(0),),),
               backgroundColor: WidgetStatePropertyAll(Colors.blue),
             ),
             onPressed: () {
@@ -124,6 +148,7 @@ class _SigninState extends State<Signin> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Don't have an account?"),
+              
               TextButton(
                 //style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blue)),
                 onPressed: () {
@@ -134,7 +159,7 @@ class _SigninState extends State<Signin> {
                 },
                 child: Text(
                   'Create an Account',
-                  style: TextStyle(color: Colors.blue,),
+                  style: TextStyle(color: Colors.blue,decoration: TextDecoration.underline),
                   
                 ),
               ),

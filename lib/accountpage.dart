@@ -31,14 +31,32 @@ class _AccountPageState extends State<AccountPage> {
         backgroundColor: Colors.blue,
         centerTitle: true,
       ),
-      body: Center(
+
+      body:Column(
+        children: [
+           SizedBox(height: 30,),
+          CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.black,
+                      child: Icon(Icons.person_2_outlined,color: Colors.white,),
+                    ),
+                    SizedBox(height: 28),
+
+        SizedBox(height: 20,),
+      
+      
+      
+       Center(
+        
+        
+
         child: Card(
           child: SizedBox(
             width: 600,
-            height: 650,
+            height: 460,
 
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Center(
                 // child: Center(
                 child: Column(
@@ -46,50 +64,80 @@ class _AccountPageState extends State<AccountPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
               
                   children: [
-                    SizedBox(height: 25),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.black,
-                      child: Icon(Icons.person_4_outlined),
+                    SizedBox(height: 38),
+                    Row(
+                      children: [
+                        Text('USERNAME',style: TextStyle(color: Colors.blue,fontSize: 12),)
+                      ],
                     ),
-                    SizedBox(height: 28),
                     TextField(
                       inputFormatters: [
                         FilteringTextInputFormatter.allow(RegExp('r[a-zA-Z]')),
                       ],
                       decoration: InputDecoration(
-                        labelText: 'USERNAME',
+                       
+                       // labelText: 'USERNAME',
                         border: OutlineInputBorder(),
                       ),
                     ),
               
                     SizedBox(height: 28),
+                    Row(
+                      children: [
+                        Text('EMAIL ADDRESS',style: TextStyle(color: Colors.blue,fontSize: 12),)
+                      ],
+                    ),
                     TextField(
                       decoration: InputDecoration(
-                        labelText: 'EMAIL ADDRESS',
+                       
+                      //  labelText: 'EMAIL ADDRESS',
                         border: OutlineInputBorder(),
                       ),
                     ),
                     SizedBox(height: 30),
+                      Row(
+                      children: [
+                        Text('MOBILE NUMBER',style: TextStyle(color: Colors.blue,fontSize: 12),)
+                      ],
+                    ),
                     TextField(
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       decoration: InputDecoration(
-                        labelText: 'MOBILE NUMBER',
+                       
+                       // labelText: 'MOBILE NUMBER',
                         border: OutlineInputBorder(),
                       ),
                     ),
               
                     SizedBox(height: 28),
+                     Row(
+                      children: [
+                        Text('PASSWORD',style: TextStyle(color: Colors.blue,fontSize: 12),)
+                      ],
+                    ),
                     TextField(
+                      obscureText: true,
                       decoration: InputDecoration(
-                        labelText: 'PASSWORD',
+                        
+                       // labelText: 'PASSWORD',
                         border: OutlineInputBorder(),
                       ),
                     ),
               
-                    SizedBox(height: 25),
+                   
+                  ],
+                ),
+              ),
+            ),
+            
+          ),
+        ),
+        
+      ),
+       SizedBox(height: 25),
                     ElevatedButton(
                       style: ButtonStyle(
+                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(0))),
                         backgroundColor: WidgetStatePropertyAll(Colors.amber),
                       ),
                       onPressed: () {
@@ -103,9 +151,9 @@ class _AccountPageState extends State<AccountPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                          
-                          Text('SUBMIT',style: TextStyle(color: Colors.white),),
+                          Text('SUBMIT',style: TextStyle(color: Colors.black),),
                           SizedBox(width: 5),
-                          Icon(Icons.output_outlined,color: Colors.white,),
+                          Icon(Icons.output_outlined,color: Colors.black,),
               
                           //Color(Colors.blue);
                         ],
@@ -123,7 +171,7 @@ class _AccountPageState extends State<AccountPage> {
                             },
                             child: Text(
                               'Sign in',
-                              style: TextStyle(color: Colors.blue),
+                              style: TextStyle(color: Colors.blue,decoration: TextDecoration.underline),
                             ),
                           ),
                           // Text('Sign in',style: TextStyle(color: Colors.blue),)
@@ -138,13 +186,7 @@ class _AccountPageState extends State<AccountPage> {
                          Text(message,style: TextStyle(fontSize: 25,color: Colors.green),),
                       ],
                     )
-                  ],
-                ),
-              ),
-            ),
-            
-          ),
-        ),
+        ],
       ),
     );
   }
