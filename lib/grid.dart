@@ -8,7 +8,7 @@ class Gridbld extends StatefulWidget {
 }
 
 class _GridbldState extends State<Gridbld> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   final List<Color> boxColors = [
     Colors.red,
@@ -21,15 +21,12 @@ class _GridbldState extends State<Gridbld> {
 
   void _onItemTapped(int index) {
     if (index == 0) {
-      // Stay on same page (Home)
       return;
     }
 
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => SecondPage(index: index),
-      ),
+      MaterialPageRoute(builder: (context) => SecondPage(index: index)),
     );
   }
 
@@ -99,22 +96,10 @@ class _GridbldState extends State<Gridbld> {
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey,
           items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.lock),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "",
-            ),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+            BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: ""),
+            BottomNavigationBarItem(icon: Icon(Icons.lock), label: ""),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
           ],
         ),
       ),
@@ -132,24 +117,19 @@ class SecondPage extends StatelessWidget {
     String message = "";
 
     if (index == 1) {
-      message = "Bar Chart Page";
+      message = "Bar Chart Icon Clicked";
     } else if (index == 2) {
-      message = "Lock Page";
+      message = "Lock Icon Clicked";
     } else if (index == 3) {
-      message = "Profile Page";
+      message = "Profile Icon Clicked";
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("New Page"),
-      ),
+      appBar: AppBar(title: const Text("New Page"),centerTitle: true,),
       body: Center(
         child: Text(
           message,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
     );
