@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/modelbottomsheet.dart';
 import 'statcard.dart';
 
 class StatsScreen extends StatefulWidget {
@@ -63,10 +64,12 @@ class _StatsScreenState extends State<StatsScreen> {
 
     return GestureDetector(
       onTap: () {
-        setState(() {
-          selectedTab = index;
-        });
-      },
+  
+    setState(() {
+      selectedTab = index;
+    });
+  
+},
       child: Container(
         padding:
             const EdgeInsets.symmetric(vertical: 10, horizontal: 25),

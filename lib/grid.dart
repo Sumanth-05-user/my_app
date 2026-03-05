@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/modelbottomsheet.dart';
 import 'homepage.dart';
 import 'statsscreen.dart';
 import 'profilepage.dart';
@@ -15,7 +16,7 @@ class _Pract1State extends State<Pract1> {
   int bottomIndex = 1;
 
   final List<Widget> pages = const [
-    HomePage(),
+    Mbsheet(),
     StatsScreen(),
     ProfilePage(),
     SettingsPage(),
@@ -26,10 +27,7 @@ class _Pract1State extends State<Pract1> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: IndexedStack(
-          index: bottomIndex,
-          children: pages,
-        ),
+        body: IndexedStack(index: bottomIndex, children: pages),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: bottomIndex,
           selectedItemColor: Colors.black,
@@ -42,13 +40,18 @@ class _Pract1State extends State<Pract1> {
           },
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home), label: "Home"),
+              icon: Icon(Icons.home),
+               label: "Home"),
+
             BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart), label: "Stats"),
+              icon: Icon(Icons.bar_chart),
+              label: "Stats",
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person), label: "Profile"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings"),
+              icon: Icon(Icons.settings),
+              label: "Settings",
+            ),
           ],
         ),
       ),
