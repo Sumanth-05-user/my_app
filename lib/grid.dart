@@ -1,135 +1,55 @@
 import 'package:flutter/material.dart';
+import 'homepage.dart';
+import 'statsscreen.dart';
+import 'profilepage.dart';
+import 'settingspage.dart';
 
-class Gridbld extends StatefulWidget {
-  const Gridbld({super.key});
+class Pract1 extends StatefulWidget {
+  const Pract1({super.key});
 
   @override
-  State<Gridbld> createState() => _GridbldState();
+  State<Pract1> createState() => _Pract1State();
 }
 
-class _GridbldState extends State<Gridbld> {
-  final int _selectedIndex = 0;
+class _Pract1State extends State<Pract1> {
+  int bottomIndex = 1;
 
-  final List<Color> boxColors = [
-    Colors.red,
-    Colors.blue,
-    Colors.green,
-    Colors.orange,
-    Colors.purple,
-    Colors.teal,
+  final List<Widget> pages = const [
+    HomePage(),
+    StatsScreen(),
+    ProfilePage(),
+    SettingsPage(),
   ];
 
-  void _onItemTapped(int index) {
-    if (index == 0) {
-      return;
-    }
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SecondPage(index: index)),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        backgroundColor: Colors.grey.shade200,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: true,
-          title: const Text(
-            "STATS",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          bottom: const TabBar(
-            indicatorColor: Colors.black,
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey,
-            tabs: [
-              Tab(text: "Day"),
-              Tab(text: "Week"),
-              Tab(text: "Month"),
-            ],
-          ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: GridView.builder(
-            itemCount: 6,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16,
-              childAspectRatio: 1.1,
-            ),
-            itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: boxColors[index % boxColors.length],
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: Text(
-                    "Item ${index + 1}",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: IndexedStack(
+          index: bottomIndex,
+          children: pages,
         ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          type: BottomNavigationBarType.fixed,
+          currentIndex: bottomIndex,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey,
+          type: BottomNavigationBarType.fixed,
+          onTap: (index) {
+            setState(() {
+              bottomIndex = index;
+            });
+          },
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.lock), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.bar_chart), label: "Stats"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person), label: "Profile"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: "Settings"),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  final int index;
-
-  const SecondPage({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    String message = "";
-
-    if (index == 1) {
-      message = "Bar Chart Icon Clicked";
-    } else if (index == 2) {
-      message = "Lock Icon Clicked";
-    } else if (index == 3) {
-      message = "Profile Icon Clicked";
-    }
-
-    return Scaffold(
-      appBar: AppBar(title: const Text("New Page"),centerTitle: true,),
-      body: Center(
-        child: Text(
-          message,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
     );
