@@ -19,8 +19,13 @@ class _TabbarState extends State<Tabbar> {
             backgroundColor: Colors.amber,
             centerTitle: true,
             bottom: const TabBar(
+              indicatorColor: Colors.amber,
+              indicatorWeight: 01,
+              labelColor: Colors.red,
+              unselectedLabelColor: Colors.blue,
+            //  isScrollable: true,
               tabs: [
-                Tab(icon: Icon(Icons.directions_bike_sharp)),
+                Tab(icon: Icon(Icons.directions_bike_sharp,semanticLabel: 'bike',)),
                 Tab(icon: Icon(Icons.directions_boat_filled)),
                 Tab(icon: Icon(Icons.directions_car_filled)),
                 //Tab(icon: Icon(Icons.directions_car_filled)),
