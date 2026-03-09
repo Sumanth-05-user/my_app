@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/dismissible.dart';
 import 'package:my_app/grid.dart';
 import 'package:my_app/login.dart';
 import 'package:my_app/mediaquery.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
      
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MediaQ(),
+      home: const Dismissible1(),
     );
   }
 }
